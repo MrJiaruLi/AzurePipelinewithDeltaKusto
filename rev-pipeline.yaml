@@ -22,7 +22,7 @@ stages:
     - bash: |
         pip install wget
       displayName: 'Command Line Script - Install wget'
-      - bash: |
+    - bash: |
         echo $PATH
         which wget
       displayName: 'CHECK wget PATH IS FOUND'
