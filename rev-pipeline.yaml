@@ -19,7 +19,7 @@ stages:
     - bash: |
         pip install wheel
       displayName: 'Command Line Script - Install wheel for the next stage'
-    - base: |
+    - bash: |
         pip install wget
       displayName: 'Command Line Script - Install wget'
     # Bash script:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#bash
