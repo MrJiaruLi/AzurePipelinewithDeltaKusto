@@ -16,7 +16,7 @@ stages:
       vmImage: 'windows-latest'
     variables:  []
     steps:
-    - script: 'pip install wget'
+    - script: 'brew install wget'
       displayName: 'Command Line Script - Install wget'
     # Bash script:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#bash
     - bash:  |
