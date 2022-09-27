@@ -22,6 +22,10 @@ stages:
     - bash: |
         pip install wget
       displayName: 'Command Line Script - Install wget'
+      - bash: |
+        echo $PATH
+        which wget
+      displayName: 'CHECK wget PATH IS FOUND'
     # Bash script:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#bash
     - bash:  |
         # Fails if one of the command fails in the script
