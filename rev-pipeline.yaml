@@ -16,6 +16,8 @@ stages:
       vmImage: 'windows-latest'
     variables:  []
     steps:
+    - script: 'pip install wheel'
+      displayName: 'Command Line Script - Install wheel for the next stage'
     - script: 'pip install wget'
       displayName: 'Command Line Script - Install wget'
     # Bash script:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#bash
