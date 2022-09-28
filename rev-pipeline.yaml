@@ -41,6 +41,7 @@ stages:
     - bash:  |
         # Fails if one of the command fails in the script
         set -e
+        mkdir -p state
         mkdir -p documentation/reverse-engineer/kql-scripts
         mkdir -p documentation/reverse-engineer/kql-scripts/complete
       displayName:  Prep script folder
