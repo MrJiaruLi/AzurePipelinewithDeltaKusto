@@ -14,7 +14,7 @@ jobs:
     target:
         adx:
             clusterUri:  to-be-overriden
-            database:  jiaruli-dev
+            database:  jiaruli-pro
     action:
         pushToConsole:  true
         filePath:  kql-scripts/delta-update.kql
