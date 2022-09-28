@@ -10,7 +10,7 @@ jobs:
   delta-dev:
     current:
         scripts:
-        - folderPath:  ../state
+        - folderPath:  state
     target:
         adx:
             clusterUri:  to-be-overriden
