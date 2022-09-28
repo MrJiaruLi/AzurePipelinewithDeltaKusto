@@ -6,11 +6,11 @@ jobs:
             clusterUri:  to-be-overriden
             database:  jiaruli-dev
     action:
-        folderPath:  kql-scripts/complete
+        filePath:  kql-scripts/complete/dev-update.kql
   delta-dev:
     current:
         scripts:
-        - folderPath:  state
+        - folderPath: state
     target:
         adx:
             clusterUri:  to-be-overriden
