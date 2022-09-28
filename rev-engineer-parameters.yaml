@@ -7,7 +7,6 @@ jobs:
             database:  jiaruli-dev
     action:
         filePath:  kql-scripts/complete/dev-update.kql
-#   delta-dev is similiar to push-script-to-prod
   delta-dev:
     current:
         scripts:
