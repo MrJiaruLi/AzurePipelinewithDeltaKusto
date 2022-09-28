@@ -1,0 +1,60 @@
+# YAML doc:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema
+
+resources:
+- repo: self
+# Triggers:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#triggers
+trigger: none
+
+# Stages:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#stage
+stages:
+- stage:  rev_engineer
+  displayName:  Reverse Engineer Database
+  variables:  []
+#   Using Azure Pipeline default pool
+#   pool:
+#       vmImage: 'windows-latest'
+  jobs:
+  - job:  delta_kusto
+    variables:  []
+    steps:
+    - bash: |
+        pip install wheel
+      displayName: 'Command Line Script - Install wheel for the next stage'
+    - bash: |
+        pip install wget
+      displayName: 'Command Line Script - Install wget'
+#     - bash: |
+#         echo $PATH
+#         which wget
+#       displayName: 'CHECK wget PATH IS FOUND'
+    # Bash script:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#bash
+    - bash:  |
+        # Fails if one of the command fails in the script
+        set -e
+        clientVersion=$(curl https://delta-kusto.azurefd.net/clientVersion/unique?fromClientVersion=0)
+        # Display the version on console
+        echo "Client Version:  $clientVersion"
+        wget https://github.com/microsoft/delta-kusto/releases/download/$clientVersion/delta-kusto-linux.tar.gz
+        tar --extract --file delta-kusto-linux.tar.gz
+        chmod +x ./delta-kusto
+      displayName:  Install Delta-Kusto
+    - bash:  |
+        # Fails if one of the command fails in the script
+        set -e
+        mkdir -p state
+        mkdir -p documentation/reverse-engineer/kql-scripts
+        mkdir -p documentation/reverse-engineer/kql-scripts/complete
+      displayName:  Prep script folder
+    - bash:  |
+        # Fails if one of the command fails in the script
+        set -e
+        clusterUri=$(CLUSTER_URI)
+        echo "Cluster URI:  $clusterUri"
+        # Package the login in a JSON payload
+        login='{"tenantId":"$(TENANT_ID)","clientId":"$(CLIENT_ID)","secret":"$(SECRET)"}'
+        ./delta-kusto -p rev-engineer-parameters.yaml -o jobs.download-dev.target.adx.clusterUri=$clusterUri jobs.delta-dev.target.adx.clusterUri=$clusterUri tokenProvider.login=$login
+      displayName:  Run Delta-Kusto
+    # Publish artefact:  https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts#publish-artifacts
+    - publish: documentation/reverse-engineer/kql-scripts
+      artifact:  kql-scripts
+      displayName: 'Publish Artifact: kql-scripts'
