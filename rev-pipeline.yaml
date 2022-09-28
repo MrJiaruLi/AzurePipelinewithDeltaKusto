@@ -37,6 +37,9 @@ stages:
         wget https://github.com/microsoft/delta-kusto/releases/download/$clientVersion/delta-kusto-windows.tar.gz
         tar --extract --file delta-kusto-windows.tar.gz
       displayName:  Install Delta-Kusto
+    - bash: |
+         which delta-kusto
+      displayName: 'CHECK delta-kusto PATH IS FOUND'
     - bash:  |
         # Fails if one of the command fails in the script
         set -e
