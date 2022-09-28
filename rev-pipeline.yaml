@@ -23,10 +23,6 @@ stages:
     - bash: |
         pip install wget
       displayName: 'Command Line Script - Install wget'
-#     - bash: |
-#         echo $PATH
-#         which wget
-#       displayName: 'CHECK wget PATH IS FOUND'
     # Bash script:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#bash
     - bash:  |
         # Fails if one of the command fails in the script
@@ -51,8 +47,7 @@ stages:
         echo "Cluster URI:  $clusterUri"
         # Package the login in a JSON payload
         login='{"tenantId":"$(TENANT_ID)","clientId":"$(CLIENT_ID)","secret":"$(SECRET)"}'
-        ./delta-kusto -p rev-engineer-parameters.yaml -o jobs.download-dev.target.adx.clusterUri=$clusterUri tokenProvider.login=$login
-#        ./delta-kusto -p rev-engineer-parameters.yaml -o jobs.download-dev.target.adx.clusterUri=$clusterUri jobs.delta-dev.target.adx.clusterUri=$clusterUri tokenProvider.login=$login
+        ./delta-kusto -p rev-engineer-parameters.yaml -o jobs.download-dev.target.adx.clusterUri=$clusterUri jobs.delta-dev.target.adx.clusterUri=$clusterUri tokenProvider.login=$login
       displayName:  Run Delta-Kusto
     # Publish artefact:  https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts#publish-artifacts
     - publish: dev-test/kql-scripts
