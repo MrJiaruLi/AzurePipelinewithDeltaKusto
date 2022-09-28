@@ -1,0 +1,36 @@
+# YAML doc:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema
+
+resources:
+- repo: self
+# Triggers:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#triggers
+trigger: none
+
+# Stages:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#stage
+stages:
+- stage:  Packaging
+  jobs:
+  - job:  Packaging
+    pool:
+      vmImage: 'ubuntu-latest'
+    variables:  []
+    steps:
+    # Publish artefact:  https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts#publish-artifacts
+    - publish: documentation/tutorials/az-dev-ops
+      artifact:  scripts
+      displayName: 'Publish Artifact:  scripts'
+- stage:  Staging
+  displayName:  Push to staging
+  variables:  []
+  jobs:
+  # Template reference:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#template-references
+  - template: deploy-db-template.yaml
+    parameters:
+      env: staging
+- stage:  Production
+  displayName:  Push to production
+  variables:  []
+  jobs:
+  # Template reference:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#template-references
+  - template: deploy-db-template.yaml
+    parameters:
+      env: prod
