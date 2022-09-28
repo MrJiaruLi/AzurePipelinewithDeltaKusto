@@ -36,10 +36,8 @@ stages:
         echo "Client Version:  $clientVersion"
         wget https://github.com/microsoft/delta-kusto/releases/download/$clientVersion/delta-kusto-windows.tar.gz
         tar --extract --file delta-kusto-windows.tar.gz
+        chmod +x ./delta-kusto
       displayName:  Install Delta-Kusto
-    - bash: |
-         which delta-kusto
-      displayName: 'CHECK delta-kusto PATH IS FOUND'
     - bash:  |
         # Fails if one of the command fails in the script
         set -e
@@ -53,7 +51,7 @@ stages:
         echo "Cluster URI:  $clusterUri"
         # Package the login in a JSON payload
         login='{"tenantId":"$(TENANT_ID)","clientId":"$(CLIENT_ID)","secret":"$(SECRET)"}'
-        delta-kusto -p rev-engineer-parameters.yaml -o jobs.download-dev.target.adx.clusterUri=$clusterUri jobs.delta-dev.target.adx.clusterUri=$clusterUri tokenProvider.login=$login
+        ./delta-kusto -p rev-engineer-parameters.yaml -o jobs.download-dev.target.adx.clusterUri=$clusterUri jobs.delta-dev.target.adx.clusterUri=$clusterUri tokenProvider.login=$login
       displayName:  Run Delta-Kusto
     # Publish artefact:  https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts#publish-artifacts
     - publish: documentation/tutorials/az-dev-ops/reverse-engineer/kql-scripts
