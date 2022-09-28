@@ -40,8 +40,8 @@ stages:
     - bash:  |
         # Fails if one of the command fails in the script
         set -e
-        mkdir documentation/tutorials/az-dev-ops/reverse-engineer/kql-scripts
-        mkdir documentation/tutorials/az-dev-ops/reverse-engineer/kql-scripts/complete
+        mkdir documentation/reverse-engineer/kql-scripts
+        mkdir documentation/reverse-engineer/kql-scripts/complete
       displayName:  Prep script folder
     - bash:  |
         # Fails if one of the command fails in the script
