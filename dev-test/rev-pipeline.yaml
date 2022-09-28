@@ -41,9 +41,8 @@ stages:
     - bash:  |
         # Fails if one of the command fails in the script
         set -e
-        mkdir -p state
-        mkdir -p documentation/reverse-engineer/kql-scripts
-        mkdir -p documentation/reverse-engineer/kql-scripts/complete
+        mkdir -p dev-test/kql-scripts
+        mkdir -p dev-test/kql-scripts/complete
       displayName:  Prep script folder
     - bash:  |
         # Fails if one of the command fails in the script
@@ -55,6 +54,6 @@ stages:
         ./delta-kusto -p rev-engineer-parameters.yaml -o jobs.download-dev.target.adx.clusterUri=$clusterUri jobs.delta-dev.target.adx.clusterUri=$clusterUri tokenProvider.login=$login
       displayName:  Run Delta-Kusto
     # Publish artefact:  https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts#publish-artifacts
-    - publish: documentation/reverse-engineer/kql-scripts
+    - publish: dev-test/kql-scripts
       artifact:  kql-scripts
       displayName: 'Publish Artifact: kql-scripts'
