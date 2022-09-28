@@ -36,8 +36,7 @@ stages:
         echo "Client Version:  $clientVersion"
         wget https://github.com/microsoft/delta-kusto/releases/download/$clientVersion/delta-kusto-windows.tar.gz
         tar --extract --file delta-kusto-windows.tar.gz
-        which ./delta-kusto
-        chmod +x ./delta-kusto
+        chmod +x ../delta-kusto
       displayName:  Install Delta-Kusto
     - bash:  |
         # Fails if one of the command fails in the script
