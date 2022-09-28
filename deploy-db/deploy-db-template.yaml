@@ -1,5 +1,5 @@
 parameters:
-  env: 'NOT_DEFINE'
+  env: 'jiaruli-pro'
 
 jobs:
   - deployment:  delta_kusto
