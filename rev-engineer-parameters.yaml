@@ -7,17 +7,17 @@ jobs:
             database:  jiaruli-dev
     action:
         filePath:  kql-scripts/complete/dev-update.kql
-  delta-dev:
-    current:
-        scripts:
-        - folderPath: state
-    target:
-        adx:
-            clusterUri:  to-be-overriden
-            database:  jiaruli-dev
-    action:
-        pushToConsole:  true
-        filePath:  kql-scripts/delta-update.kql
+#   delta-dev:
+#     current:
+#         scripts:
+#         - folderPath: state
+#     target:
+#         adx:
+#             clusterUri:  to-be-overriden
+#             database:  jiaruli-dev
+#     action:
+#         pushToConsole:  true
+#         filePath:  kql-scripts/delta-update.kql
 tokenProvider:
     login:
         tenantId:  to-be-overriden
