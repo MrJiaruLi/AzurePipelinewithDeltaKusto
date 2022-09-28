@@ -19,7 +19,6 @@ stages:
       displayName: 'Command Line Script - Install wheel for the next stage'
     - bash: |
         pip install wget
-        which wget
       displayName: 'Command Line Script - Install wget'
     - bash: |
         echo $PATH
