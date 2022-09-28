@@ -4,7 +4,7 @@ jobs:
     target:
         adx:
             clusterUri:  to-be-overriden
-            database:  dev
+            database:  jiaruli-dev
     action:
         folderPath:  kql-scripts/complete
   delta-dev:
@@ -14,7 +14,7 @@ jobs:
     target:
         adx:
             clusterUri:  to-be-overriden
-            database:  dev
+            database:  jiaruli-dev
     action:
         pushToConsole:  true
         filePath:  kql-scripts/delta.kql
