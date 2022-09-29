@@ -14,6 +14,11 @@ stages:
 #       vmImage: 'ubuntu-latest'
     variables:  []
     steps:
+    - bash: |
+       # Fails if one of the command fails in the script
+        set -e
+        mkdir -p documentation/d2p
+      displayName:  Prep scripts folder
     # Publish artefact:  https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts#publish-artifacts
     - publish: documentation/d2p
       artifact:  scripts
