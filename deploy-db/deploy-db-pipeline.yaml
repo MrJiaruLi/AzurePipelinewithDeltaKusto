@@ -16,8 +16,10 @@ stages:
 #       vmImage: 'ubuntu-latest'
     variables:  []
     steps:
-    # Publish artefact:  https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts#publish-artifacts
-    - publish: $(System.DefaultWorkingDirectory)/bin/
+    - script: dir
+      workingDirectory: $(Agent.BuildDirectory)
+      displayName: List contents of a folder
+    - publish: /deploy-db/
       artifact:  scripts
       displayName: 'Publish Artifact:  scripts'
 - stage:  Staging
