@@ -30,7 +30,7 @@ stages:
   # Template reference:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#template-references
   - template: deploy-db-template.yaml
     parameters:
-      env: eq-dev
+      env: stage
 - stage:  Production
   displayName:  Push to production
   variables:  []
