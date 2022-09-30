@@ -8,7 +8,7 @@ trigger:
 
 # Stages:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#stage
 stages:
-- stage:  Packaging / Initializing
+- stage:  Packaging
   jobs:
   - job:  Packaging
 #   apply the default agent tools. Azure Pipelines with vmImage : 'ubuntu-latest'. 
