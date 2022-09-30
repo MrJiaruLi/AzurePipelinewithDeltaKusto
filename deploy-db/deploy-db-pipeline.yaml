@@ -19,7 +19,7 @@ stages:
     - script: dir
       workingDirectory: $(Agent.BuildDirectory)
       displayName: List contents of a folder
-    - publish: $(Pipeline.Workspace)/
+    - publish: $(Pipeline.Workspace)/deploy-db
       artifact:  scripts
       displayName: 'Publish Artifact:  scripts'
 - stage:  Staging
