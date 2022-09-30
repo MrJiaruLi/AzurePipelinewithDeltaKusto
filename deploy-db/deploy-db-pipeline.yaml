@@ -2,25 +2,22 @@
 
 resources:
 - repo: self
-# Triggers:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#triggers
-trigger: none
+# configure a CI trigger on master branch.
+trigger: 
+- master
 
 # Stages:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#stage
 stages:
-- stage:  Packaging
+- stage:  Packaging / Initializing
   jobs:
   - job:  Packaging
+#   apply the default agent tools. Azure Pipelines with vmImage : 'ubuntu-latest'. 
 #     pool:
 #       vmImage: 'ubuntu-latest'
     variables:  []
     steps:
-#     - bash: |
-#        # Fails if one of the command fails in the script
-#         set -e
-#         mkdir -p documentation/d2p
-#       displayName:  Prep scripts folder
     # Publish artefact:  https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts#publish-artifacts
-    - publish: documentation/d2p
+    - publish: $(System.DefaultWorkingDirectory)/bin/
       artifact:  scripts
       displayName: 'Publish Artifact:  scripts'
 - stage:  Staging
