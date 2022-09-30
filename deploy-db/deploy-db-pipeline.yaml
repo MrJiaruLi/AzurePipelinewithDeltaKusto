@@ -19,9 +19,6 @@ stages:
     - script: dir
       workingDirectory: $(Agent.BuildDirectory)
       displayName: List contents of a folder
-    - bash: |
-      echo $(Pipeline.Workspace)
-      displayName: show the path for publish pipeline artifacts
     - publish: $(Pipeline.Workspace)/
       artifact:  scripts
       displayName: 'Publish Artifact:  scripts'
