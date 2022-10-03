@@ -28,7 +28,6 @@ stages:
   jobs:
   - script: dir
     which 'deploy-db-template.yaml'
-
   # Template reference:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#template-references
   - template: deploy-db-template.yaml
     parameters:
