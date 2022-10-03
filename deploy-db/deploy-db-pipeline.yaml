@@ -22,17 +22,13 @@ stages:
     - publish: $(Pipeline.Workspace)/
       artifact:  scripts
       displayName: 'Publish Artifact:  scripts'
-- stage: Verification
-  jobs: 
-  - job: PathVerification
-    steps:
-    - script: dir 
-        which -a deploy-db-template.yaml
-      displayName: 'Found the path to the yaml file.'
 - stage:  Staging
   displayName:  Push to staging
   variables:  []
   jobs:
+  - script: dir 
+      which -a deploy-db-template.yaml
+    displayName: 'Found the path to the yaml file.'
   # Template reference:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#template-references
   - template: deploy-db-template.yaml
     parameters:
