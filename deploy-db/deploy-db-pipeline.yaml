@@ -24,7 +24,7 @@ stages:
       displayName: 'Publish Artifact:  scripts'
 - stage: Verification
   jobs: 
-  - job: Path Verification
+  - job: PathVerification
     steps:
     - script: dir 
         which -a deploy-db-template.yaml
