@@ -26,7 +26,8 @@ stages:
   jobs: 
   - job: Path Verification
     steps:
-    - bash: | which -a deploy-db-template.yaml
+    - script: dir 
+        which -a deploy-db-template.yaml
       displayName: 'Found the path to the yaml file.'
 - stage:  Staging
   displayName:  Push to staging
