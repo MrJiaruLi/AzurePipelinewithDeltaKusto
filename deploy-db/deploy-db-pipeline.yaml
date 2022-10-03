@@ -26,9 +26,9 @@ stages:
   displayName:  Push to staging
   variables:  []
   jobs:
-  - bash: 
+  - script: dir
     which 'deploy-db-template.yaml'
-    displayName: Hello World
+
   # Template reference:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#template-references
   - template: deploy-db-template.yaml
     parameters:
