@@ -17,8 +17,8 @@ stages:
     variables:  []
     steps:
     - script: dir
-      which 'deploy-db-template.yaml'
       workingDirectory: $(Agent.BuildDirectory)
+      listOfYamlFiles: which 'deploy-db-template.yaml'
       displayName: List contents of a folder
     - publish: $(Pipeline.Workspace)/
       artifact:  scripts
