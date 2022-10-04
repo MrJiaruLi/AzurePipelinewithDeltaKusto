@@ -31,6 +31,6 @@ stages:
   variables:  []
   jobs:
   # Template reference:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#template-references
-  - template: deploy-db-template.yaml
+  - template: deploy-db-push.yaml
     parameters:
       env: jiaruli-pro
