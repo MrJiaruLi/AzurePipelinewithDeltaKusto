@@ -30,7 +30,7 @@ jobs:
               # Fails if one of the command fails in the script
               set -e
               env=${{ parameters.env }}
-              scriptFolder="$(Pipeline.Workspace)/scripts"
+              scriptFolder="$(Pipeline.Workspace)/scripts/s"
               echo "Environnement:  $env"
               echo "State folder:  $scriptFolder"
               clusterUri=$(CLUSTER_URI)
