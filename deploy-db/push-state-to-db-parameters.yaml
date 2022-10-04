@@ -7,7 +7,7 @@ jobs:
             database:  to-be-overriden
     target:
         scripts:
-        - folderPath:  ../state
+        - folderPath:  ../dev-update
     action:
         pushToCurrent:  true
         pushToConsole:  true
