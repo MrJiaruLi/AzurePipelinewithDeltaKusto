@@ -8,7 +8,7 @@ trigger:
 
 # Stages:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#stage
 stages:
-- stage:  Packaging
+- stage:  Packaging-1
   jobs:
   - job:  Packaging
 #   apply the default agent tools. Azure Pipelines with vmImage : 'ubuntu-latest'. 
@@ -26,6 +26,14 @@ stages:
   - template: deploy-db-download.yaml
     parameters:
       env: eq-dev 
+- stage:  Packaging-2
+  jobs:
+  - job:  Packaging
+    variables:  []
+    steps:
+    - publish: $(Pipeline.Workspace)/
+      artifact:  scripts
+      displayName: 'Publish Artifact:  updated scripts'
 - stage:  Production
   displayName:  Push scripts to production environment
   variables:  []
