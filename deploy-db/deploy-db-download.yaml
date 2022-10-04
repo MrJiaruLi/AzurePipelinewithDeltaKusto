@@ -39,3 +39,6 @@ jobs:
               login='{"tenantId":"$(TENANT_ID)","clientId":"$(CLIENT_ID)","secret":"$(SECRET)"}'
               ./delta-kusto -p $scriptFolder/deploy-db/download-dev.yaml -o jobs.download-dev.target.adx.clusterUri=$clusterUri jobs.download-dev.target.adx.database=$env tokenProvider.login=$login
             displayName:  Run Delta-Kusto Download Scripts from Dev Env
+          - publish: $(Pipeline.Workspace)/
+            artifact:  updated-scripts
+            displayName: 'Publish Artifact: updated-scripts'
