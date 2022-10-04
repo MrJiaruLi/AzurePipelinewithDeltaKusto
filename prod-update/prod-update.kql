@@ -1,4 +1,1 @@
 
-.create-or-alter function with (docstring = "A list of interesting states",folder = "states") InterestingStates {
-    dynamic(["WASHINGTON", "FLORIDA", "GEORGIA", "NEW YORK"])
-}
