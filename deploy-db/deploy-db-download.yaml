@@ -24,13 +24,13 @@ jobs:
             displayName:  Install Delta-Kusto
           # Download artefacts:  https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts#download-artifacts
           - download: current
-            artifact: documents
-            displayName:  Download artefact 'documents'
+            artifact: scripts
+            displayName:  Download artefact 'scripts'
           - bash:  |
               # Fails if one of the command fails in the script
               set -e
               env=${{ parameters.env }}
-              scriptFolder="$(Pipeline.Workspace)/documents"
+              scriptFolder="$(Pipeline.Workspace)/scripts/s"
               echo "Environnement:  $env"
               echo "State folder:  $scriptFolder"
               clusterUri=$(CLUSTER_URI)
