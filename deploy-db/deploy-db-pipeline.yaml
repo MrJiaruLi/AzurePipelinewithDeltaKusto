@@ -26,19 +26,10 @@ stages:
   - template: deploy-db-download.yaml
     parameters:
       env: eq-dev 
-# - stage:  PackagingUpdatedScripts
-#   jobs:
-#   - job:  Packaging
-#     variables:  []
-#     steps:
-#     - publish: $(Pipeline.Workspace)/
-#       artifact:  scripts
-#       displayName: 'Publish Artifact:  updated scripts'
 - stage:  Production
   displayName:  Push scripts to production environment
   variables:  []
   jobs:
-  # Template reference:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#template-references
   - template: deploy-db-push.yaml
     parameters:
       env: jiaruli-pro
