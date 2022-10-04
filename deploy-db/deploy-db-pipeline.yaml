@@ -18,19 +18,17 @@ stages:
     steps:
     - script: dir
       workingDirectory: $(Agent.BuildDirectory)
-#       which 'deploy-db-template.yaml'
       displayName: List contents of a folder
     - publish: $(Pipeline.Workspace)/
       artifact:  scripts
       displayName: 'Publish Artifact:  scripts'
 - stage:  Staging
-  displayName:  Push to staging
+  displayName:  Download from dev
   variables:  []
   jobs:
-  # Template reference:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#template-references
-  - template: deploy-db-template.yaml
+  - template: deploy-db-download.yaml
     parameters:
-      env: jiaruli-dev 
+      env: eq-dev 
 - stage:  Production
   displayName:  Push to production
   variables:  []
