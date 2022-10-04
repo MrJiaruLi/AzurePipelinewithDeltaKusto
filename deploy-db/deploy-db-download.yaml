@@ -25,7 +25,7 @@ jobs:
           # Download artefacts:  https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts#download-artifacts
           - download: current
             artifact: scripts
-            displayName:  Download artefact 'scripts'
+            displayName:  Download Artifact 'scripts'
           - bash:  |
               # Fails if one of the command fails in the script
               set -e
