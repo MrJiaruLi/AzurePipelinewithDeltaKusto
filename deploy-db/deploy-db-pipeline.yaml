@@ -17,8 +17,8 @@ stages:
     variables:  []
     steps:
     - publish: $(Pipeline.Workspace)/
-      artifact:  scripts
-      displayName: 'Publish Artifact:  scripts'
+      artifact:  documents
+      displayName: 'Publish Artifact:  documents'
 - stage:  Staging
   displayName:  Download scripts from development environment
   variables:  []
