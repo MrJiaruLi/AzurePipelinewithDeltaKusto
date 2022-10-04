@@ -1,0 +1,14 @@
+sendErrorOptIn:  true
+jobs:
+  push-script-to-prod:
+    current:
+        adx:
+            clusterUri:  to-be-overriden
+            database:  to-be-overriden
+    target:
+        scripts:
+        - filePath:  ../dev-update/dev-update.kql
+    action:
+        filePath: ../prod-update/prod-update.kql
+        pushToCurrent:  true
+        pushToConsole:  true
