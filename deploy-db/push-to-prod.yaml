@@ -7,8 +7,8 @@ jobs:
             database:  to-be-overriden
     target:
         scripts:
-        - folderPath:  ../dev-update
+        - filePath:  ../dev-update/dev-update.kql
     action:
-        folderPath: ../prod-update
+        filePath: ../prod-update/prod-udpate.kql
         pushToCurrent:  true
         pushToConsole:  true
