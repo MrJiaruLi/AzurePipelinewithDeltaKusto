@@ -7,5 +7,4 @@ jobs:
             database:  to-be-overriden
     action:
         filePath:  ../dev-update/dev-update.kql
-        pushToCurrent:  true
         pushToConsole:  true
