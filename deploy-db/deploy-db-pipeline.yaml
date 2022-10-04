@@ -16,21 +16,18 @@ stages:
 #       vmImage: 'ubuntu-latest'
     variables:  []
     steps:
-    - script: dir
-      workingDirectory: $(Agent.BuildDirectory)
-      displayName: List contents of a folder
     - publish: $(Pipeline.Workspace)/
       artifact:  scripts
       displayName: 'Publish Artifact:  scripts'
 - stage:  Staging
-  displayName:  Download from dev
+  displayName:  Download scripts from development environment
   variables:  []
   jobs:
   - template: deploy-db-download.yaml
     parameters:
       env: eq-dev 
 - stage:  Production
-  displayName:  Push to production
+  displayName:  Push scripts to production environment
   variables:  []
   jobs:
   # Template reference:  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#template-references
