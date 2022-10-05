@@ -1,0 +1,17 @@
+# from target write back to current
+sendErrorOptIn:  true
+failIfDataLoss:  false
+jobs:
+  prod-to-dev-sync:
+    current:
+      adx:
+          clusterUri:  to-be-overriden
+          database:  to-be-overriden
+    target:
+      adx:
+          clusterUri:  to-be-overriden
+          database:  to-be-overriden
+    action:
+        filePath:  ../dev-update/dev-update.kql
+        pushToCurrent:  true
+        pushToConsole: true
