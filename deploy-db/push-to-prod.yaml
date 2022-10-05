@@ -1,3 +1,4 @@
+# push to uat / prod, push target scripts to current db 
 sendErrorOptIn:  true
 jobs:
   push-script-to-prod:
